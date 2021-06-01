@@ -4,8 +4,7 @@ import { shuffle } from './convenienceFunctions';
 export const circle_ids = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 //the colors used for the balls. Colors toward the end of the array earn more points
 export const color_palette = ["#F0F3A7", "#F5CC6E", "#F77B25", "#F81203"];
-//const colors = ["#CDCEF1", "#8A8DF1", "#4E53F2", "#030AF3"];
-//const colors = ["#c9daf8", "#6d9eeb", "#1155cc", "#052e54"];
+
 
 //controls whether the outcomes of the rounds played during the Training phase are
 //predetermined (when mode="predetermined"), or randomly generated during the phase
@@ -22,16 +21,6 @@ export const PROBS = [.1, .1, .1, .1, .7, .7, .9, .9];
 //the causal power of the colored balls in an urn (e.g. 4 is the number of points from a red ball)
 export const colors = [3, 2, 1, 1, 2, 1, 1, 4];
 
-
-// //export const PROBS = [.9,.2,.1,.1,.1,.9,.9,.9];
-// //export const colors = [2,2,2,2,2,2,2,2];
-// //
-// actualWorld = urn_ids.map((i) => {
-//     let color = colors[i - 1];
-//     let binary = actualWorld[i - 1];
-//     return (color * binary);
-// })
-// export var actualWorld;
 
 //this function takes as input an array with yes/no information on whether
 //a colored ball was drawn from each urn, and outputs an array with the number
@@ -51,22 +40,11 @@ const timesPower = (array) => {
 //this is a list of the points that the fictional player got from each urn
 export const actualWorld = timesPower([1, 0, 1, 0, 1, 0, 0, 1]);
 
-// export const actualWorlds = shuffle([
-//     timesPower([0, 0, 0, 0, 1, 0, 1, 0]),
-//     timesPower([0, 1, 0, 0, 1, 1, 1, 1]),
-//     timesPower([0, 1, 0, 0, 0, 1, 1, 1]),
-//     timesPower([1, 0, 0, 0, 1, 0, 1, 1]),
-//     timesPower([0, 0, 0, 0, 1, 0, 1, 1]),
-//     timesPower([0, 0, 0, 0, 1, 1, 1, 1]),
-//     timesPower([0, 0, 0, 1, 1, 1, 1, 1]),
-//     timesPower([0, 0, 0, 0, 0, 1, 1, 1]),
-//     timesPower([0, 1, 0, 1, 1, 1, 1, 1]),
-//     timesPower([0, 0, 1, 0, 0, 0, 1, 1])
-// ]);
 
 
 //the required minimum amount of points to win the game
-export const threshold = 6;
+//depending on the condition, this will be 6 or 8
+export const threshold = 8;
 
 //the code below pseudo-randomly generates the outcome of the games played
 //by the participant during the training phase. 

@@ -73,7 +73,7 @@ const TestPhase = (props) => {
     //the question 
     const causalQuestion = <span className="causalQuestion">
         <h3 text-align="center">Please tell us how much you agree with the following statement:</h3>
-        <h2 text-align="center">Joe won because he drew a colored ball from box {questionLetter}</h2>
+        <h3 text-align="center">Joe won because he drew a colored ball from box {questionLetter}</h3>
         {nextTrialButton}
         <Likert {...likertOptions} />
         

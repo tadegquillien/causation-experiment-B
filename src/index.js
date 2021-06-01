@@ -47,12 +47,12 @@ const Root = () => {
   //a list of IDs of the trials for the Training phase
   //const trial_ids = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   //const trial_ids = [1,2,3,4,5,6,7,8,9,10];
-  const trial_ids = [1,2];
+  const trial_ids = [1,2,3,4,5,6,7,8,9,10];
   //generate the trials of the Training phase
   const trials = trial_ids.map((i) => {
     return <TrainingPhase key={i} increment={increment} trial={trialNumber}
       phase={currentPhase} trial_ids={trial_ids} shuffledUrnIds={shuffledUrnIds}
-      ballColorsList={ballColorsList} />
+      ballColorsList={ballColorsList} setCurrentPhase={setCurrentPhase}/>
   })
 
   //a list of the urns about which we will ask causal questions,

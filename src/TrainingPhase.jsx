@@ -31,6 +31,8 @@ const TrainingPhase = (props) => {
     const nextTrialButton = urnCounter > (urn_ids.length - 1) ? <button style={{...buttonStyle, marginLeft:"0"}} onClick={() => handleClick()}>
         {buttonText}</button> : null;
 
+    const devSkip = <button onClick={()=>props.setCurrentPhase("transition")}>Dev:Skip</button>;
+
     //when we click on the "next round" button, increment the 'trial' variable and record the score in the Data
     const handleClick = ()=>{
         props.increment(trial);
@@ -47,6 +49,7 @@ const TrainingPhase = (props) => {
         <h1>this is round #{trial}</h1>
         <h1>{outcome}</h1>
         {nextTrialButton}
+        {devSkip}
         </div>
         {/*the urns*/}
         <div className="urns"><Image ids={circle_ids} colors={colors} prob={PROBS} 

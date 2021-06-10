@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { textStyle, buttonStyle } from './dimensions';
+import { sendData } from './chunksIncrementalUsage'
 import Data from './Data';
 
 
@@ -47,6 +48,8 @@ const Demographics = (props) => {
         Data.demographics.push({ 'race': race });
         Data.demographics.push({ 'comment': comment });
         props.setCurrentPhase("ending");
+        sendData();
+
     }
 
     //display the page

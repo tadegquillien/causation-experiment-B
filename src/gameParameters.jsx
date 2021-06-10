@@ -44,7 +44,7 @@ export const actualWorld = timesPower([1, 0, 1, 0, 1, 0, 0, 1]);
 
 //the required minimum amount of points to win the game
 //depending on the condition, this will be 6 or 8
-export const threshold = 8;
+export const threshold = 6;
 
 //the code below pseudo-randomly generates the outcome of the games played
 //by the participant during the training phase. 

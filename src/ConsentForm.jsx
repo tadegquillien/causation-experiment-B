@@ -28,7 +28,7 @@ const ConsentForm = (props) => {
             <h2>What will happen if I decide to take part? </h2>
             <p>You are invited to participate in an online study that involves observing, interacting with, and making judgments about simple stimuli on a web-based interface. Once you finish, we may have some questions about your experience (e.g., age, gender, feedback about how you approached the task). Your responses will be recorded.
             Specifically, we collect non-identifiable data about your responses during the study, including mouse clicks, keyboard presses, and answers to questionnaires. We do not record your audio or video. We also collect minimal identifiable information about your worker ID and IP address to prevent repeat participation. The identifiable information will only be stored in a secure database and only for the duration of data collection. This information will be stripped from the datasets prior to any academic publications.
-        Your session should last for up to STUDY_DEPENDENT minutes. You will be given full instructions shortly.</p>
+        We estimate that the study session will last about 7 minutes. You will be given full instructions shortly.</p>
 
             <h2>Compensation.</h2>
             <p>You will be paid for your participation in this study in accordance with the Prolific description. </p>

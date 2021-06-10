@@ -27,13 +27,29 @@ const Instructions = (props) => {
         setTrialNumber((a) => a + 1);
     }
 
+    //the dimensions for some of the text
+    const localTextStyle = {
+        display: "flex",
+        flexDirection: "column",
+        //justifyContent: "center",
+        alignItems: "center",
+        textAlign: "left",
+        //minHeight: "100vh",
+        marginLeft: "20vw",
+        marginRight: "20vw",
+        fontSize: "20px",
+        }
+
     //the props we will pass on to each page
     const tutorialProps = {
         test_ids: props.test_ids,
         shuffleUrnIds: props.shuffleUrnIds,
         setCurrentPhase: props.setCurrentPhase,
-        incrementTrial: incrementTrial
+        incrementTrial: incrementTrial,
+        localTextStyle: localTextStyle
     };
+
+    
 
     //the list of pages
     const instructionTrials = [<Intro {...tutorialProps} />,
@@ -54,15 +70,15 @@ const Instructions = (props) => {
 const Intro = (props) => {
     return (
         <span style={textStyle}>
-            <p >In this study you will play a simple game of chance</p>
+            <p >In this study you will play a simple game of chance.</p>
             <br></br>
             <p>
-                There will be boxes in front of you. Each box contains a mix of <b>black</b> balls and <span style={{ color: "red" }}><b>colored</b></span> balls. You will be able to randomly draw a ball from each box
+                There will be boxes in front of you. Each box contains a mix of <b>black</b> balls and <span style={{ color: "red" }}><b>colored</b></span> balls. You will be able to randomly draw a ball from each box.
             </p>
 
             <br></br>
             <p>You start with a score of 0. Every time you draw a <span style={{ color: "red" }}><b>colored</b></span> ball from a box, you earn points.</p>
-            <p>By contrast, <b>black</b> balls do not give you any points</p>
+            <p>By contrast, <b>black</b> balls do not give you any points.</p>
             <br></br>
             <p>You win the game if you get at least {threshold} points.</p>
             <button style={buttonStyle} onClick={() => props.incrementTrial()}>click to continue</button>
@@ -78,6 +94,8 @@ const TaskTutorial = (props) => {
     //keeps track of whether the participant clicked on "draw"
     const [urnCounter, setUrnCounter] = useState(0);
 
+    
+
     //when the participant clicks on 'draw', a button appears which allows him
     //to go to the next page
     const nextPageButton = (urnCounter > 0) ?
@@ -86,22 +104,29 @@ const TaskTutorial = (props) => {
 
     //after the participant clicks on 'draw', display this text
     const afterDrawText = (urnCounter > 0) ?
-        <span>
-            <p>You have just drawn a <b>black</b> ball. Therefore you get <b>zero</b> points</p>
+        <span style={props.localTextStyle}>
+            <p>You have just drawn a <b>black</b> ball. Therefore you get <b>zero</b> points.</p>
         </span> :
         null;
+
+   
 
     //display the page
     return (
 
-        <span style={textStyle}>
-            <p>Here is an example. When you click on "draw", one ball will be randomly drawn from the box</p>
-            <p>Click on "draw" next to the box to draw a ball</p>
+        <div className = "page" 
+        //style={textStyle}
+        >
+            <div className="text" style={props.localTextStyle}>
+            <p>Here is an example. When you click on "draw", one ball will be randomly drawn from the box. Each ball is equally likely to be selected.</p>
+            <p>Click on "draw" next to the box to draw a ball.</p>
+            </div>
+            
             {/*generate one urn. It is set up so that the participant will draw a black ball*/}
-            <span className="containerInst">
+            <div className="containerInst">
                 <span className="urnInst"><GenerateUrn ids={circle_ids} urnColorID={4} urnLetter={"A"}
                     drawn={0}
-                    ballColors={[0, "#F81203", 0, "#F81203", 0, 0, "#F81203", 0, "#F81203", 0]}
+                    ballColors={[0, "#F81203", 0, "#F81203", 0, 0, 0, 0, "#F81203", 0]}
                     phase={"instructions"}
                     testNumber={1}
                     test_ids={props.test_ids}
@@ -110,14 +135,17 @@ const TaskTutorial = (props) => {
                     setUrnCounter={setUrnCounter}
                 /></span>
                 {/*a scoreboard*/}
-                <span className="scoreboardInst">
+                <div className="scoreboardInst">
                     <h2>Score: {score}</h2>
-                </span></span>
-
-            {afterDrawText}
+                </div>
+                </div>
+        <div className="afterClick">
+        {afterDrawText}
             {nextPageButton}
+        </div>
+            
             <br></br>
-        </span>
+        </div>
 
 
 
@@ -148,29 +176,35 @@ const TaskTutorialTwo = (props) => {
     //display the page
     return (
 
-        <span style={textStyle}>
-            <p>Note that the more colored balls there are in a box, the more likely you are to draw a colored ball. For example, the box below has 4 colored balls out of 10 balls, so logically you have a 40% chance of drawing a colored ball. </p>
-            <p>Click on "draw" next to the box to draw a ball</p>
-            <span className="containerInst">
+        <div className="page">
+            <div className = "text" style={props.localTextStyle}>
+            <p>The more colored balls there are in a box, the more likely you are to
+draw a colored ball. The box below has 6 colored balls out of 10 balls,
+so you have a 60% chance of drawing a colored ball. </p>
+            <p>Click on "draw" next to the box to draw a ball.</p></div>
+            
+            <div className="containerInst">
                 {/*generate one urn. It is set up so that the participant will draw a red ball*/}
-                <span className="urnInst"><GenerateUrn ids={circle_ids} urnColorID={4} urnLetter={"A"}
+                <div className="urnInst"><GenerateUrn ids={circle_ids} urnColorID={4} urnLetter={"A"}
                     drawn={4}
-                    ballColors={[0, "#F81203", 0, "#F81203", 0, 0, "#F81203", 0, "#F81203", 0]}
+                    ballColors={[0, "#F81203", 0, "#F81203", "#F81203", 0, "#F81203", 0, "#F81203", "#F81203"]}
                     phase={"instructions"}
                     testNumber={1}
                     test_ids={props.test_ids}
                     shuffledUrnIds={props.shuffledUrnIds}
                     scoreSetter={setScore}
                     setUrnCounter={setUrnCounter}
-                /></span>
+                /></div>
                 {/*a scoreboard*/}
                 <span className="scoreboardInst">
                     <h2>Score: {score}</h2>
-                </span></span>
-
+                </span></div>
+            <div className="afterClick" style={props.localTextStyle}>
             {afterDrawText}
             {nextPageButton}
-        </span>
+            </div>
+            
+        </div>
 
     )
 
@@ -210,10 +244,10 @@ const TaskTutorialFour = (props) => {
     return (
         <div style={textStyle}>
             <p>You will now play the game 10 times in a row.</p>
-            <p>The game consists in drawing a ball from each of ten boxes.</p>
+            <p>The game consists in drawing a ball from each of eight boxes.</p>
             <p>To win, you need to score at least {threshold} points.</p>
-            <p>You will need to draw a ball from each of the ten boxes before moving on to the next round. All rounds of the game are independent from each other.</p>
-            <p><i>Please pay close attention to how your score evolves as you draw colored balls</i></p>
+            <p>You will need to draw a ball from each of the eight boxes before moving on to the next round.</p>
+            <p><i>Please pay close attention to how your score increases as you draw colored balls.</i></p>
             <button style={buttonStyle} onClick={() => props.incrementTrial()}>click to continue</button>
         </div>
     )

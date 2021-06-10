@@ -1,6 +1,6 @@
 //manages the page during the Training phase
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Image from './Image';
 import './TrainingPhase.css';
 import Data from './Data';
@@ -18,6 +18,8 @@ const TrainingPhase = (props) => {
     const [ score, setScore ] = useState(0);
     //keep track of how many urns we have already drawn from
     const [ urnCounter, setUrnCounter ] = useState(0);
+
+    const [scoreColor, setScoreColor ] = useState("black");
     //increments the score
     const scoreSetter = (a) => {
         setScore(a);
@@ -39,26 +41,42 @@ const TrainingPhase = (props) => {
         Data.scores.push(score);
     }
     
+    useEffect(() => {
+      if(score >= threshold){setScoreColor("#03D310")};
+    }, [score]);
+
     //display the urns and the scoreboard
     return(
+      <span className = "superContainer">
       <span className="container">
-        {/*the scoreboard*/}
-        <div className="scoreboard">
-        <h1>number of points required to win: {threshold}</h1><br></br>
-        <h1>Current score: {score}</h1><br></br>
-        <h1>this is round #{trial}</h1>
-        <h1>{outcome}</h1>
-        {nextTrialButton}
-        {devSkip}
+
+        <div className="currentScore">
+        <h1>Current score: <span style={{color: scoreColor}}>{score}</span></h1><br></br>
         </div>
+
+
         {/*the urns*/}
         <div className="urns"><Image ids={circle_ids} colors={colors} prob={PROBS} 
        score={score} scoreSetter={scoreSetter} setUrnCounter={setUrnCounter} mode={mode}
        phase={props.phase} shuffledUrnIds={props.shuffledUrnIds}
-       ballColorsList={props.ballColorsList} trial={trial}/></div>
+       ballColorsList={props.ballColorsList} trial={trial} setScoreColor={setScoreColor}/></div>
+
+        {/*the scoreboard*/}
+        <div className="requiredScore">
+        <h1>number of points required to win: {threshold}</h1><br></br>
+        </div>
+        
+        
         
        
         
+      </span>
+      <div className="side">
+        <h1>this is round #{trial}</h1>
+        <h1>{outcome}</h1>
+        {nextTrialButton}
+        {devSkip}
+      </div>
       </span>
     )
     

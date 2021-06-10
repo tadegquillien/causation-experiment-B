@@ -35,7 +35,8 @@ const Image = (props) => {
         return (
             <GenerateUrn ids={circle_ids} urnColorID={colors[i - 1]} urnLetter={chosenLetter} prob={PROBS[i - 1]} drawn={world[i - 1]}
                 scoreSetter={props.scoreSetter} setUrnCounter={props.setUrnCounter} phase={props.phase}
-                ballColors={props.ballColorsList[i - 1]} />
+                ballColors={props.ballColorsList[i - 1]} setScoreColor={props.setScoreColor} 
+                score={props.score}/>
         )
     }
     )

@@ -72,10 +72,13 @@ const TestPhase = (props) => {
     
     //the question 
     const causalQuestion = <span className="causalQuestion">
+       
         <h3 text-align="center">Please tell us how much you agree with the following statement:</h3>
         <h3 text-align="center">Joe won because he drew a colored ball from box {questionLetter}</h3>
-        {nextTrialButton}
-        <Likert {...likertOptions} />
+        <div style={{marginLeft:"80vw"}}>{nextTrialButton}</div>
+        <div style={{marginLeft:"20vw", marginRight:"20vw"}}><Likert {...likertOptions} /></div>
+        
+        
         
     </span>
 
@@ -86,13 +89,14 @@ const TestPhase = (props) => {
             alignItems: "center",
             textAlign: "center",
             marginLeft: "20vw",
-            marginRight: "20vw"
+            marginRight: "20vw",
             }
     
     //this text is displayed at the beginning of the phase, before the first trial
-    const introduction = <div style={introductionStyle}>
+    const introduction = <div style={{backgroundColor: "lightgrey"}}>
+        <div style={introductionStyle}>
         <h3>
-            Above you can see the outcome of the round that Joe played. <br></br>
+            Below you can see the outcome of the round that Joe played. <br></br>
             Joe drew {props.test_ids.length} colored balls, and he got {score} points, so he won the game. <br></br>
             Please take a moment to look at the boxes, and at the balls that Joe drew.<br></br> 
             In the next pages, you will see the same picture, and we will ask you some questions about why he won the game.
@@ -102,6 +106,7 @@ const TestPhase = (props) => {
         click to continue</button>
         <br></br>
         </div>;
+    </div>
 
     //if this is the beginning of the phase, display the introduction, otherwise
     //display the causal question
@@ -113,16 +118,17 @@ const TestPhase = (props) => {
 
     return (
         <span className="metaContainer">
+            {probe}
             <span className="containerTest">
                 <div className="scoreboardTest">
                     <h1>number of points required to win: {threshold}</h1><br></br>
-                    <h1>Player's score: {score}</h1><br></br>
+                    <h1>Player's score: <span style={{color:"#03D310"}}>{score}</span></h1><br></br>
                     <h1>{outcome}</h1>
                 </div>
                 <div className="urnsTest" >{img}</div>
                 
             </span>
-            {probe}
+            
         </span>
         
         

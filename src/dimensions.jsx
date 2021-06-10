@@ -4,7 +4,7 @@
 //(formally, ball_size = 2*(ball_radius + margin))
 //many other variables depend on it, such that
 //changing this parameter re-scales the entire urn
-export const ball_size = 30;
+export const ball_size = 26;
 
 //how much space there is between a ball and the edge of the urn
 export const margin = ball_size / 10;
@@ -45,7 +45,7 @@ export const textStyle = {
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
-    textAlign: "center",
+    textAlign: "left",
     minHeight: "100vh",
     marginLeft: "20vw",
     marginRight: "20vw",
@@ -62,7 +62,5 @@ export const buttonStyle = {
     marginLeft: "auto",
     marginRight: "auto",
     fontSize: "24px",
-    backgroundColor: '#008CBA',
-    border: 'none',
     cursor: 'pointer',
   };

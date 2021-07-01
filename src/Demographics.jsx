@@ -48,7 +48,7 @@ const Demographics = (props) => {
         Data.demographics.push({ 'race': race });
         Data.demographics.push({ 'comment': comment });
         props.setCurrentPhase("ending");
-        sendData();
+        sendData(Data);
 
     }
 

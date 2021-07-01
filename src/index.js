@@ -23,9 +23,9 @@ import Instructions from './Instructions';
 import Transition from './Transition';
 import Demographics from './Demographics';
 import { ballColorsList, shuffledUrnIds } from './randomizedParameters';
-import Data from './Data';
+import { textStyle } from './dimensions';
 import { shuffle } from './convenienceFunctions';
-import { urn_ids, actualWorld } from './gameParameters';
+import { urn_ids, actualWorld, validationCode } from './gameParameters';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -87,23 +87,12 @@ const Root = () => {
   )
 
     //the end of the study (PROVISIONAL)
-  const ending = testNumber > test_ids.length ?
-    Array.from(tests.keys()).map((i) => {
-      return (<span>
-        <p>test number: {'\u00A0'}
-          {Data.responses[i].trial}
-          {'\u00A0'}
-      urn: {'\u00A0'}
-          {Data.responses[i].letter}
-          {'\u00A0'}
-      response: {'\u00A0'}
-          {Data.responses[i].response}
-          {'\u00A0'}
-      urn ID: {'\u00A0'}
-          {Data.responses[i].urnID}
-        </p>
-      </span>);
-    }) : null
+  const ending = 
+    <div style={textStyle}>Thank you for your participation!
+    <br></br>
+    Please enter the code {validationCode} at Prolific.
+    <br></br>
+    After you've entered that code, you can then close the present tab.</div>;
 
     //the structure of the study:
     //this code displays a page, in function of the current phase,

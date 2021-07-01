@@ -33,7 +33,10 @@ const TrainingPhase = (props) => {
     const nextTrialButton = urnCounter > (urn_ids.length - 1) ? <button style={{...buttonStyle, marginLeft:"0"}} onClick={() => handleClick()}>
         {buttonText}</button> : null;
 
-    const devSkip = <button onClick={()=>props.setCurrentPhase("transition")}>Dev:Skip</button>;
+    //to be able to skip this phase in development mode, comment 
+    //the following line and uncomment the one after
+    const devSkip = null;
+    //const devSkip = <button onClick={()=>props.setCurrentPhase("transition")}>Dev:Skip</button>;
 
     //when we click on the "next round" button, increment the 'trial' variable and record the score in the Data
     const handleClick = ()=>{

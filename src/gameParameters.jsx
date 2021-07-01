@@ -1,5 +1,7 @@
 import { shuffle } from './convenienceFunctions';
 
+//the validation code to be entered in prolific. It should range from 4000 to 8000
+export const validationCode = Math.round(Math.random()*4000 + 4000);
 //a list of IDs for all balls within an urn
 export const circle_ids = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 //the colors used for the balls. Colors toward the end of the array earn more points
@@ -44,7 +46,8 @@ export const actualWorld = timesPower([1, 0, 1, 0, 1, 0, 0, 1]);
 
 //the required minimum amount of points to win the game
 //depending on the condition, this will be 6 or 8
-export const threshold = 6;
+export const threshold = 8;
+export const condition = threshold === 6 ? "easy" : threshold === 8 ? "difficult" : NaN;
 
 //the code below pseudo-randomly generates the outcome of the games played
 //by the participant during the training phase. 

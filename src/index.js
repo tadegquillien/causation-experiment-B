@@ -86,7 +86,7 @@ const Root = () => {
     />
   )
 
-    //the end of the study (PROVISIONAL)
+    //the end of the study
   const ending = 
     <div style={textStyle}>Thank you for your participation!
     <br></br>

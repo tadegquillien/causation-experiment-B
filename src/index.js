@@ -87,13 +87,13 @@ const Root = () => {
   )
 
     //the end of the study
-  const ending = 
+    const ending = 
     <div style={textStyle}>Thank you for your participation!
     <br></br>
-    Please enter the code {validationCode} at Prolific.
+    Please click on this link to go back to Prolific: <a href="https://app.prolific.co/submissions/complete?cc=113C348D">https://app.prolific.co/submissions/complete?cc=113C348D.</a>
     <br></br>
-    After you've entered that code, you can then close the present tab.</div>;
-
+    After you have clicked the link, you can then close the present tab.</div>;
+    
     //the structure of the study:
     //this code displays a page, in function of the current phase,
     //and of the trial number within that phase

@@ -70,6 +70,8 @@ const Instructions = (props) => {
 const Intro = (props) => {
     return (
         <span style={textStyle}>
+            <p style={{color:"red"}}>(Please do not refresh the page during the study -- you would be unable to complete the experiment)</p>
+            <br></br>
             <p >In this study you will play a simple game of chance.</p>
             <br></br>
             <p>
